@@ -1,0 +1,7 @@
+require 'bundler'
+Bundler.setup
+Bundler.require :default
+
+require 'yaml'
+
+import 'lib/tasks/cql.rake'

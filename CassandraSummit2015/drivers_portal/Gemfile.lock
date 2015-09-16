@@ -1,0 +1,39 @@
+GIT
+  remote: git://github.com/jnunemaker/cassanity.git
+  revision: da53f19e21a4b3a534128a4d994fb74c88ef8e1e
+  specs:
+    cassanity (0.8.0)
+      cassandra-driver (~> 2.1.1)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    cassandra (0.23.0)
+      json
+      rake
+      simple_uuid (~> 0.3)
+      thrift_client (~> 0.7, < 0.9)
+    cassandra-driver (2.1.4)
+      ione (~> 1.2)
+    ione (1.2.1)
+    json (1.8.3)
+    rake (10.4.2)
+    ruby-prof (0.15.8)
+    simple_uuid (0.4.0)
+    statsd-ruby (1.2.1)
+    thrift (0.8.0)
+    thrift_client (0.8.4)
+      thrift (~> 0.8.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  cassandra
+  cassanity (~> 0.8)!
+  rake
+  ruby-prof
+  statsd-ruby
+
+BUNDLED WITH
+   1.10.4
