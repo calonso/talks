@@ -1,0 +1,177 @@
+<!DOCTYPE html> 
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>HTML 5 Demo</title> 
+		<link rel="apple-touch-icon" href="images/icon.png">
+		<!-- CSS -->
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" />
+		<!--<link rel="stylesheet" href="css/custom_css.min.css" />-->
+		<!-- jQuery Core -->
+		<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script> 
+		<!-- jQuery Mobile -->
+		<script type="text/javascript" src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script> 
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="http://maps.googleapis.com/maps/api/js?sensor=true"></script>
+		
+		<script type="text/javascript">
+			delete localStorage.items;
+			$('#geolocation').live('pageinit', function(){
+				navigator.geolocation.getCurrentPosition (function(pos) {
+					var lat = pos.coords.latitude;
+					var lng = pos.coords.longitude;
+					var latlng = new google.maps.LatLng (lat, lng);
+					var options = {
+						zoom: 15,
+						center: latlng,
+						mapTypeId: google.maps.MapTypeId.ROADMAP
+					};
+					var $content = $("#geolocation div:jqmData(role=content)");
+					$content.height (screen.height - 100);
+					var map = new google.maps.Map ($content[0], options);
+					
+					new google.maps.Marker ({
+							map: map,
+							animation: google.maps.Animation.DROP,
+							position: latlng
+						});
+				}, function(e) {
+					alert("Error: " + e.message);
+				}, {maximumAge: 30000, timeout: 30000, enableHighAccuracy: true});
+			});
+			
+			$('#canvas').live('pageinit', function() {
+				var context = $('#theCanvas')[0].getContext('2d');
+				context.beginPath();
+				context.rect(20, 20, 200, 100);
+				var grd = context.createLinearGradient(20, 20, 220, 120);
+				grd.addColorStop(0, '#8ED6FF');
+				grd.addColorStop(1, '#004CB3');
+				context.fillStyle = grd;
+				context.fill();
+				context.stroke();
+				
+				context.beginPath();
+				context.arc(70, 200, 50, 0, 2 * Math.PI, false);
+				grd = context.createLinearGradient(30, 150, 120, 250);
+				grd.addColorStop(0, '#000000');
+				grd.addColorStop(1, '#BC2920');
+				context.fillStyle = grd;
+				context.fill();
+				context.stroke();
+			});
+			
+			$('#storage').live('pageinit', function(){
+				refreshList();
+			});
+			
+			$('#add_btn').live('click', function() {
+				var $input = $('#item');
+				if (!$input.val()) {
+					alert("You have to add some text!");
+				} else {
+					var arr = localStorage.items ? JSON.parse(localStorage.items) : [];
+					arr.push($input.val());
+					localStorage.items = JSON.stringify(arr);
+				}
+				refreshList();
+			});
+			
+			function refreshList() {
+				var $list = $("#storage ol:jqmData(role=listview)").empty();
+				var arr = localStorage.items ? JSON.parse(localStorage.items) : [];
+				if (arr.length) {
+					$.each(arr, function(index, value) {
+						var $li = $('<li>').text(value);
+						$list.append($li);
+					});
+				}
+				$list.listview("refresh");
+			}
+		</script>
+	</head> 
+	<body> 
+		<div data-role="page" id="main-menu" data-title="HTML 5 Demo | Home">
+			<div data-role="header"> 
+			    <h1>HTML 5 Demo</h1>
+			</div>
+			<div data-role="content">
+			    <ul data-role="listview"> 
+					<li><a href="#geolocation">Geolocation API</a></li> 
+					<li><a href="#canvas">Canvas</a></li>
+					<li><a href="#storage">Offline Storage</a></li>
+				</ul>
+			</div>
+			<div data-role="footer" data-position="fixed">
+			    <div data-role="navbar">
+					<ul>
+						<li><a href="#main-menu">Home</a></li>
+						<li><a href="#geolocation">GPS</a></li>
+						<li><a href="#canvas">Canvas</a></li>
+						<li><a href="#storage">Storage</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<div data-role="page" id="geolocation" data-title="HTML 5 Demo | Geolocation" data-add-back-btn="true">
+			<div data-role="header"> 
+			    <h1>Geolocation API</h1>
+			</div>
+			<div data-role="content">
+			    <p>Wait for the map...</p>
+			</div>
+			<div data-role="footer" data-position="fixed">
+			    <div data-role="navbar">
+					<ul>
+						<li><a href="#main-menu">Home</a></li>
+						<li><a href="#geolocation">GPS</a></li>
+						<li><a href="#canvas">Canvas</a></li>
+						<li><a href="#storage">Storage</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<div data-role="page" id="canvas" data-title="HTML 5 Demo | Canvas" data-add-back-btn="true">
+			<div data-role="header"> 
+			    <h1>Canvas</h1>
+			</div>
+			<div data-role="content">
+			    <canvas id="theCanvas" width="320" height="480"></canvas>
+			</div>
+			<div data-role="footer" data-position="fixed">
+			    <div data-role="navbar">
+					<ul>
+						<li><a href="#main-menu">Home</a></li>
+						<li><a href="#geolocation">GPS</a></li>
+						<li><a href="#canvas">Canvas</a></li>
+						<li><a href="#storage">Storage</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<div data-role="page" id="storage" data-title="HTML 5 Demo | Offline Storage" data-add-back-btn="true">
+			<div data-role="header"> 
+			    <h1>Offline Storage</h1>
+			</div>
+			<div data-role="content">
+				<input type="text" id="item" placeholder="Add Item..." value=""/>
+				<input type="button" id="add_btn" value="Add Item" data-icon="plus" data-inline="true"/>
+			    <ol data-role="listview" data-inset="true">
+				</ol>
+			</div>
+			<div data-role="footer" data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#main-menu">Home</a></li>
+						<li><a href="#geolocation">GPS</a></li>
+						<li><a href="#canvas">Canvas</a></li>
+						<li><a href="#storage">Storage</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

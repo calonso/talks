@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Images Gallery</title>
+    
+    <script src="js/gallery/core.js"></script>
+    <script src="js/gallery/main_panel.js"></script>
+    <script src="js/gallery/pic.js"></script>
+    
+    <script>
+        var gallery;
+        function loadGallery() {
+            gallery = new GALLERY.MainPanel("gallery_panel");
+            gallery.loadImages(['images/A.jpg', 'images/E.jpg', 'images/I.jpg', 'images/O.jpg', 'images/U.jpg']);
+        }
+    </script>
+</head>
+
+<body onload='loadGallery()'>
+
+    <div id="gallery_panel">
+
+    </div>
+
+</body>
+</html>

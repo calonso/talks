@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>XSS</title>
+    
+    <script>
+        var name = decodeURIComponent(window.location.search.substring(1) || "");
+        document.write("Hello " + escape(name));
+        
+        /*window.onload = function() {
+            while(document.body.firstElementChild)document.body.removeChild(document.body.firstElementChild);document.write("You have been attacked");
+        }*/
+    </script>
+</head>
+
+<body>
+
+    <p>Uno</p>
+    <p>Dos</p>
+    <p>Tres</p>
+
+</body>
+</html>

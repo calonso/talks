@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Page Title</title>
+    <meta charset="utf8" />
+    <script>
+        function buildContents(level, prefix) {
+            level = level || 1;
+            prefix = prefix ? prefix + "." : "";
+            if (level == 7) {
+                return;
+            }
+            for (var i = 1 ; i <= 6 ; ++i) {
+                var header = document.createElement('h' + level);
+                header.innerHTML = "Seccion " + prefix + i;
+                document.body.appendChild(header);
+                buildContents(level + 1, prefix + i);
+            }
+        }
+    </script>
+</head>
+
+<body onload='buildContents()'>
+
+    
+    
+</body>
+</html>

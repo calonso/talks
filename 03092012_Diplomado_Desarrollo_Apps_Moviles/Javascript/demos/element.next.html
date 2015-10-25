@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Page Title</title>
+    <script>
+        Element.prototype.next = function() {
+            if (this.nextElementSibling) {
+                return this.nextElementSibling;
+            } else {
+                var sib = this.nextSibling;
+                while(sib && sib.nodeType !== 1) {
+                    sib = sib.nextSibling;
+                }
+                return sib;
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <p id="first" data-x="1" data-y="2">Primero</p>
+    <p id="second">Segundo</p>
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf8" />
+    <title>HTML 5 Catalog</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+    <!-- jQuery Core -->
+    <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+    
+    <script>
+        $(document).bind("mobileinit", function(){
+            // Place for global configuration of jQM
+        });
+    </script>
+    <!-- jQuery Mobile -->
+    <script type="text/javascript" src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=true"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/canvas.js"></script>
+    <script src="js/video.js"></script>
+        
+    <script>     
+        $(document).bind("ready", function(){
+            
+        });
+        
+        $('#geolocation').live('pageinit', function(){
+            navigator.geolocation.getCurrentPosition (function(pos) {
+                var lat = pos.coords.latitude;
+                var lng = pos.coords.longitude;
+                var latlng = new google.maps.LatLng (lat, lng);
+                var options = {
+                    zoom: 15,
+                    center: latlng,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+                var $content = $("#geolocation div:jqmData(role=content)");
+                $content.height (screen.height - 100);
+                var map = new google.maps.Map ($content[0], options);
+                
+                new google.maps.Marker ({
+                        map: map,
+                        animation: google.maps.Animation.DROP,
+                        position: latlng
+                    });
+            }, function(e) {
+                alert("Error: " + e.message);
+            }, {maximumAge: 30000, timeout: 30000, enableHighAccuracy: true});
+        });
+    </script>
+    
+</head>
+
+<body>
+    <div data-role="page" id="main-menu">
+        <div data-role="header">
+            <h1 id="header-title">HTML 5 Catalog</h1>
+        </div>
+        
+        <div data-role="content">
+            <ul data-role="listview">
+                <li><a href="#geolocation">Geolocation</a></li> 
+                <li><a href="pages/canvas.html">Canvas</a></li>
+                <li><a href="pages/storage.html">Offline Storage</a></li>
+                <li><a href="pages/video.html">Video Player</a></li>
+            </ul>
+        </div>
+        
+        <div data-role="footer" data-position="fixed">
+            <h1>&nbsp;</h1>
+        </div>
+    </div>
+    
+    <div data-role="page" id="geolocation" data-title="HTML 5 Demo | Geolocation" data-add-back-btn="true">
+        <div data-role="header"> 
+            <h1>Geolocation</h1>
+        </div>
+        <div data-role="content">
+            <p>Wait for the map...</p>
+        </div>
+        <div data-role="footer" data-position="fixed">
+            <h1>&nbsp;</h1>
+        </div>
+    </div>
+
+</body>
+</html>

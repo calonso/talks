@@ -1,0 +1,174 @@
+<!--
+  More AJAX.
+  GET the ranking from
+  http://interlat-racing.herokuapp.com/ranking
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Title</title> 
+  <meta charset="utf8" />
+  <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <style type="text/css">
+    .hidden {
+      display: none;
+    }
+  </style>
+  <script>
+    $(document).ready(function() {
+      var race;
+      $.ajax({
+        url: 'http://interlat-racing.herokuapp.com/config',
+        success: function(data, textStatus, jqXHR ) {
+          race = new Race(data.cars_count);
+          $('button').removeAttr('disabled');
+          $('#race_config p').html(data.cars_count + ' drivers ready');
+        }
+      });
+
+      $('button').click(function() {
+        $('#race_config').fadeOut(function(){
+          $('table').fadeIn(function(){
+            race.start();
+          });
+        });
+      });
+    });
+
+    function Race(num_cars) {
+      this.running_cars = num_cars;
+      this.cars = [];
+      this.ranking = new Ranking(); 
+      for(var i = 0 ; i < num_cars ; ++i) {
+        this.cars[i] = new Car(i);
+      }
+
+      var race = this;
+      $('table').on('CAR_FINISHED', function(event, car_num) {
+        race.add_finished(car_num);
+      });
+    }
+
+    Race.prototype = {
+      cars: null,
+      winner: null,
+      running_cars: 0,
+      ranking: null,
+      start: function() {
+        $('table').trigger('RACE_START');
+      },
+      add_finished: function(car_num) {
+        if(this.winner == null) {
+          this.winner = car_num;
+        }
+        this.ranking.rank_car(car_num);
+
+        var race = this;
+
+        if(this.ranking.count() == this.running_cars) {
+          $('#race_results p').html('RACE FINISHED. WINNER: ' + this.winner);
+          $('table').fadeOut(function(){
+            $('#race_results').fadeIn();
+            race.ranking.submit();
+          });
+        }
+      }
+    };
+
+    function Ranking() {
+      this.ranking = [];
+    }
+
+    Ranking.prototype = {
+      ranking: null,
+      rank_car: function(car) {
+        this.ranking.push(car);
+      },
+      count: function() {
+        return this.ranking.length;
+      },
+      submit: function() {
+        var self = this;
+        $.ajax({
+          url: 'http://interlat-racing.herokuapp.com/ranking',
+          type: 'POST',
+          contentType: 'application/json',
+          data: JSON.stringify({ ranking: this.ranking }),
+          error: function(data, textStatus, jqXHR) {
+            alert('ERROR Submitting the ranking! ' + data.error);
+          },
+          success: function(data, textStatus, jqXHR ) {
+            self.get();
+          }
+        });
+      },
+      get: function() {
+        $.ajax({
+          url: 'http://interlat-racing.herokuapp.com/ranking',
+          success: function(data, textStatus, jqXHR) {
+            var list = $('#ranking ol');
+
+            $.each(data, function(index, object){
+              var item = $('<li></li>', { html: 'Car: ' + object.car + ' Score: ' + object.score });
+              list.append(item);
+            });
+            $('#race_results').fadeOut(function(){
+              $('#ranking').fadeIn();
+            });
+          }
+        });
+      }
+    }
+
+    function Car(number) {
+      this.number = number;
+      this.$row = $('<tr></tr>', { html: '<td>' + number + '</td><td>IDLE</td>'});
+      $('table tbody').append(this.$row);
+
+      var car = this;
+      $('table').on('RACE_START', function() {
+        car.run();
+      });
+    }
+
+    Car.prototype = {
+      number: null,
+      $row: null,
+      run: function() {
+        this.$row.find('td:last').html('RUNNING');
+        var car = this;
+        setTimeout(function() {
+          car.finish();
+        }, Math.random() * 5000);
+      },
+      finish: function() {
+        this.$row.find('td:last').html('FINISHED');
+        $('table').trigger('CAR_FINISHED', [this.number]);
+      }
+    }
+  </script>
+</head>
+<body>
+  <div id='race_config'>
+    <p>Waiting drivers...</p>
+    <button disabled>Run!</button>
+  </div>
+  <table class="hidden">
+    <thead>
+      <tr>
+        <th>Car</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+  <div id='race_results' class='hidden'>
+    <p></p>
+  </div>
+  <div id='ranking' class='hidden'>
+    <ol>
+    </ol>
+  </div>
+</body>
+</html>

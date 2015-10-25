@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Page Title</title>
+    <meta charset="utf8" />
+    <script>
+        function buildTOC() {
+            var toc = document.createElement('div');
+            document.body.insertBefore(toc, document.body.firstElementChild);
+            
+            var headings = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
+            for (var i = 0 ; i < headings.length ; ++i) {
+                var heading = headings[i];
+                heading.id = i;
+                var level = parseInt(heading.tagName.charAt(1));
+                var tocEntry = document.createElement('p');
+                
+                var indentation = "";
+                for (var j = 0 ; j < level ; ++j) {
+                    indentation += "+";
+                }
+                
+                var link = document.createElement('a');
+                link.innerHTML = indentation + heading.innerHTML;
+                link.href = '#' + i;
+                
+                tocEntry.appendChild(link);
+                toc.appendChild(tocEntry);
+            }
+        }
+    </script>
+</head>
+
+<body onload='buildTOC()'>
+
+    <h1>Seccion 1</h1>
+    <p>Intro 1</p>
+    <h2>Seccion 1.1</h2>
+    <p>Intro 1.1</p>
+    <h3>Seccion 1.1.1</h3>
+    <p>Intro 1.1.1</p>
+    <h4>Seccion 1.1.1.1</h4>
+    <p>Intro 1.1.1.1</p>
+    <h5>Seccion 1.1.1.1.1</h5>
+    <p>Intro 1.1.1.1.1</p>
+    <h6>Seccion 1.1.1.1.1.1</h6>
+    <p>Intro 1.1.1.1.1.1</p>
+    <h2>Seccion 1.2</h2>
+    <p>Intro 1.2</p>
+    <h3>Seccion 1.2.1</h3>
+    <p>Intro 1.2.1</p>
+    <h4>Seccion 1.2.1.1</h4>
+    <p>Intro 1.2.1.1</p>
+    <h5>Seccion 1.2.1.1.1</h5>
+    <p>Intro 1.2.1.1.1</p>
+    <h6>Seccion 1.2.1.1.1.1</h6>
+    <p>Intro 1.2.1.1.1.1</p>
+    
+    <h1>Seccion 2</h1>
+    <p>Intro 2</p>
+    <h2>Seccion 2.1</h2>
+    <p>Intro 2.1</p>
+    <h3>Seccion 2.1.1</h3>
+    <p>Intro 2.1.1</p>
+    <h4>Seccion 2.1.1.1</h4>
+    <p>Intro 2.1.1.1</p>
+    <h5>Seccion 2.1.1.1.1</h5>
+    <p>Intro 2.1.1.1.1</p>
+    <h6>Seccion 2.1.1.1.1.1</h6>
+    <p>Intro 2.1.1.1.1.1</p>
+    <h2>Seccion 2.2</h2>
+    <p>Intro 2.2</p>
+    <h3>Seccion 2.2.1</h3>
+    <p>Intro 2.2.1</p>
+    <h4>Seccion 2.2.1.1</h4>
+    <p>Intro 2.2.1.1</p>
+    <h5>Seccion 2.2.1.1.1</h5>
+    <p>Intro 2.2.1.1.1</p>
+    <h6>Seccion 2.2.1.1.1.1</h6>
+    <p>Intro 2.2.1.1.1.1</p>
+    
+</body>
+</html>

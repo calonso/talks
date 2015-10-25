@@ -1,0 +1,110 @@
+<!--
+  First animations.
+  Number of cars is given from input.
+  3 pages. Config, Race, Results
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Title</title> 
+  <meta charset="utf8" />
+  <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <style type="text/css">
+    .hidden {
+      display: none;
+    }
+  </style>
+  <script>
+    $(document).ready(function() {
+      $('button').click(function() {
+        $('table').fadeIn();
+        $('#race_config').fadeOut(function(){
+          var race = new Race($('#cars_num').val());
+          race.start();
+        });
+      });
+    });
+
+    function Race(num_cars) {
+      this.running_cars = num_cars;
+      this.cars = [];
+      for(var i = 0 ; i < num_cars ; ++i) {
+        this.cars[i] = new Car(i);
+      }
+
+      var race = this;
+      $('table').on('CAR_FINISHED', function(event, car_num) {
+        race.add_finished(car_num);
+      });
+    }
+
+    Race.prototype = {
+      cars: null,
+      winner: null,
+      num_finished_cars: 0,
+      running_cars: 0,
+      start: function() {
+        $('table').trigger('RACE_START');
+      },
+      add_finished: function(car_num) {
+        if(this.winner == null) {
+          this.winner = car_num;
+        }
+        this.num_finished_cars += 1;
+
+        if(this.num_finished_cars == this.running_cars) {
+          $('#race_results p').html('RACE FINISHED. WINNER: ' + this.winner);
+          $('#race_results').fadeIn();
+          $('table').fadeOut();
+        }
+      }
+    };
+
+    function Car(number) {
+      this.number = number;
+      this.$row = $('<tr></tr>', { html: '<td>' + number + '</td><td>IDLE</td>'});
+      $('table tbody').append(this.$row);
+
+      var car = this;
+      $('table').on('RACE_START', function() {
+        car.run();
+      });
+    }
+
+    Car.prototype = {
+      number: null,
+      $row: null,
+      run: function() {
+        this.$row.find('td:last').html('RUNNING');
+        var car = this;
+        setTimeout(function() {
+          car.finish();
+        }, Math.random() * 5000);
+      },
+      finish: function() {
+        this.$row.find('td:last').html('FINISHED');
+        $('table').trigger('CAR_FINISHED', [this.number]);
+      }
+    }
+    </script>
+</head>
+<body>
+  <div id='race_config'>
+    <input id="cars_num" type="number" />
+    <button>Run!</button>
+  </div>
+  <table class="hidden">
+    <thead>
+      <tr>
+        <th>Car</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+  <div id='race_results' class='hidden'>
+    <p></p>
+  </div>
+</body>
+</html>

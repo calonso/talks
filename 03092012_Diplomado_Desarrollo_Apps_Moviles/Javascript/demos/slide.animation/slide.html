@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Sliding animation</title>
+    
+    <script>
+        var gallery;
+        window.onload = function () {
+            var img = document.getElementById('img');
+            slide(img, completed);
+        };
+        
+        function completed() {
+            console.log("animation finished");
+        }
+        
+        function slide(elt, oncomplete) {
+            var start = (new Date()).getTime();
+            var target = 500;
+            animate();
+            
+            function animate() {
+                var elapsed = (new Date()).getTime() - start;
+                if (elapsed < 1000) {
+                    elt.style.left = (target * elapsed / 1000) + "px";
+                    setTimeout(animate, 1000 / 24);
+                } else {
+                    oncomplete();
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <img style="position:absolute" width="200" id="img" src="images/A.jpg">
+
+</body>
+</html>

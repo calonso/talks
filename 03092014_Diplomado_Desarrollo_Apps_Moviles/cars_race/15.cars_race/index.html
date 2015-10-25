@@ -1,0 +1,112 @@
+<!--
+  jQuery Mobile Lists
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Title</title> 
+  <meta charset="utf8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.css">
+  <link rel="stylesheet" type="text/css" href="./css/styles.css">
+
+  <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.js"></script>
+
+  <script src="./js/race.js"></script>
+  <script src="./js/ranking.js"></script>
+  <script src="./js/car.js"></script>
+
+  <script>
+    var race;
+    $(document).ready(function() {
+      $.ajax({
+        url: 'http://interlat-racing.herokuapp.com/config',
+        success: function(data, textStatus, jqXHR ) {
+          race = new RACE.Race(data.cars_count);
+          $('#race_config button').removeAttr('disabled');
+          $('#race_config p').html(data.cars_count + ' drivers ready');
+        }
+      });
+
+      $('#race_config button').click(function() {
+        $.mobile.changePage($("#race"), { transition: 'slide' });
+      });
+
+      $('#race_results button').click(function() {
+        $.mobile.changePage($("#ranking"));
+      });
+    });
+
+    $(document).on('pageshow', '#race', function() {
+      race.start();
+    });
+  </script>
+</head>
+<body>
+
+  <div data-role="page" id="race_config">
+    <div data-role="header">
+      <h1>Car racing simulator</h1>
+    </div>
+    <div role="main" class="ui-content">
+      <p>Waiting drivers...</p>
+      <button disabled>Run!</button>
+    </div>
+    <div data-role="footer" data-position="fixed">
+      <h4>Footer</h4>
+    </div>
+  </div>
+
+
+  <div data-role="page" id="race">
+    <div data-role="header">
+      <h1>Race Day</h1>
+    </div>
+    <div role="main" class="ui-content">
+      <table>
+        <thead>
+          <tr>
+            <th>Car</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+    <div data-role="footer" data-position="fixed">
+      <h4>Footer</h4>
+    </div>
+  </div>
+
+  <div data-role="page" data-dialog="true" id="race_results">
+    <div data-role="header">
+      <h1>Results</h1>
+    </div>
+    <div role="main" class="ui-content">
+      <p></p>
+      <button>Close</button>
+    </div>
+    <div data-role="footer" data-position="fixed">
+      <h4>Footer</h4>
+    </div>
+  </div>
+
+  <div data-role="page" id="ranking">
+    <div data-role="header">
+      <h1>Ranking</h1>
+    </div>
+    <div role="main" class="ui-content">
+      <ol data-role="listview">
+      </ol>
+    </div>
+    <div data-role="footer" data-position="fixed">
+      <h4>Footer</h4>
+    </div>
+  </div>
+
+</body>
+</html>

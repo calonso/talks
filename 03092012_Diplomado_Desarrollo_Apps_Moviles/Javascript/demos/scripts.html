@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Page Title</title>
+    
+    <meta charset="utf8" />
+    
+    <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+    
+    <script>
+        var clicks = 0;
+    </script>
+</head>
+
+<body>
+    
+    <input type="button" value="Click++" onclick="clicks += 1; console.log('clicks: ' + clicks);" />
+    
+    <a href="javascript:document.write('You have clicked: ' + clicks + ' times');" /> Show </a>
+    
+    <a href="javascript:void(0)" onclick="console.log('You have clicked: ' + clicks + ' times');" /> Show in console </a>
+
+</body>
+</html>

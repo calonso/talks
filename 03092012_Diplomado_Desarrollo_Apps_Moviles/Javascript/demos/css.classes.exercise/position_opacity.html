@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>CSS Example</title>
+    <style>
+        img {
+            width: 200px;
+            height: 200px;
+        }
+        
+        .translucent {
+            opacity: .75;
+        }
+    </style>
+    <script>
+        function loaded() {
+            var letters = ['A', 'E', 'I', 'O', 'U'];
+            for (var i = 0 ; i < letters.length ; ++i) {
+                var img = document.createElement('img');
+                img.src = 'images/' + letters[i] + '.jpg';
+                img.style.position = "absolute";
+                img.style.top = (100 * i) + "px";
+                img.style.left = (100 * i) + "px";
+                img.classList.add("translucent");
+                document.body.appendChild(img);
+            }
+        }
+    </script>
+</head>
+
+<body onload="loaded();">
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Dragging image</title>
+    
+    <script>
+        var gallery;
+        window.onload = function () {
+            var img = document.getElementById('theimge');
+            img.addEventListener("mousedown", held, false);
+        };
+        
+        function held(evt) {
+            console.log("held");
+            evt.preventDefault();
+            document.addEventListener("mousemove", moved, true);
+            document.addEventListener("mouseup", released, true);
+        }
+        
+        function moved(evt) {
+            console.log("moved");
+            evt.stopPropagation();
+        }
+        
+        function released(evt) {
+            console.log("released");
+            document.removeEventListener("mousemove", moved, true);
+            document.removeEventListener("mouseup", released, true);
+        }
+    </script>
+</head>
+
+<body>
+
+    <img id="theimge" src='images/A.jpg' />
+
+</body>
+</html>

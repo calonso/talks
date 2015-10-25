@@ -1,0 +1,377 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		072D406218987D86009082A1 /* ProximityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 072D406018987D86009082A1 /* ProximityViewController.m */; };
+		072D406518987DAA009082A1 /* ProximityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 072D406418987DAA009082A1 /* ProximityViewController.xib */; };
+		07848293188C618E00EE2EE1 /* MagnetometerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07848291188C618E00EE2EE1 /* MagnetometerViewController.m */; };
+		07848296188C61A800EE2EE1 /* MagnetometerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07848295188C61A800EE2EE1 /* MagnetometerViewController.xib */; };
+		079CE234188AF45C00D476F8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 079CE233188AF45C00D476F8 /* Foundation.framework */; };
+		079CE236188AF45C00D476F8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 079CE235188AF45C00D476F8 /* CoreGraphics.framework */; };
+		079CE238188AF45C00D476F8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 079CE237188AF45C00D476F8 /* UIKit.framework */; };
+		079CE240188AF45C00D476F8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 079CE23F188AF45C00D476F8 /* main.m */; };
+		079CE267188B143200D476F8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 079CE264188B143200D476F8 /* AppDelegate.m */; };
+		079CE268188B143200D476F8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 079CE266188B143200D476F8 /* Images.xcassets */; };
+		079CE26E188B14DF00D476F8 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 079CE26D188B14DF00D476F8 /* MainMenuViewController.m */; };
+		079CE272188B16C600D476F8 /* AccelerometerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 079CE270188B16C600D476F8 /* AccelerometerViewController.m */; };
+		079CE275188B16F800D476F8 /* AccelerometerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 079CE274188B16F800D476F8 /* AccelerometerViewController.xib */; };
+		079CE277188B182700D476F8 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 079CE276188B182700D476F8 /* CoreMotion.framework */; };
+		079CE27D188B293D00D476F8 /* GyroscopeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 079CE27B188B293D00D476F8 /* GyroscopeViewController.m */; };
+		079CE280188B2F5F00D476F8 /* GyroscopeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 079CE27F188B2F5F00D476F8 /* GyroscopeViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		072D405F18987D86009082A1 /* ProximityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProximityViewController.h; sourceTree = "<group>"; };
+		072D406018987D86009082A1 /* ProximityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProximityViewController.m; sourceTree = "<group>"; };
+		072D406418987DAA009082A1 /* ProximityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProximityViewController.xib; sourceTree = "<group>"; };
+		07848290188C618E00EE2EE1 /* MagnetometerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagnetometerViewController.h; sourceTree = "<group>"; };
+		07848291188C618E00EE2EE1 /* MagnetometerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MagnetometerViewController.m; sourceTree = "<group>"; };
+		07848295188C61A800EE2EE1 /* MagnetometerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MagnetometerViewController.xib; sourceTree = "<group>"; };
+		079CE230188AF45C00D476F8 /* Sensors.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sensors.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		079CE233188AF45C00D476F8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		079CE235188AF45C00D476F8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		079CE237188AF45C00D476F8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		079CE23B188AF45C00D476F8 /* Sensors-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Sensors-Info.plist"; sourceTree = "<group>"; };
+		079CE23F188AF45C00D476F8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		079CE241188AF45C00D476F8 /* Sensors-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sensors-Prefix.pch"; sourceTree = "<group>"; };
+		079CE24C188AF45C00D476F8 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		079CE263188B143200D476F8 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		079CE264188B143200D476F8 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		079CE266188B143200D476F8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		079CE26C188B14DF00D476F8 /* MainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
+		079CE26D188B14DF00D476F8 /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
+		079CE26F188B16C600D476F8 /* AccelerometerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccelerometerViewController.h; sourceTree = "<group>"; };
+		079CE270188B16C600D476F8 /* AccelerometerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccelerometerViewController.m; sourceTree = "<group>"; };
+		079CE274188B16F800D476F8 /* AccelerometerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccelerometerViewController.xib; sourceTree = "<group>"; };
+		079CE276188B182700D476F8 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		079CE27A188B293D00D476F8 /* GyroscopeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GyroscopeViewController.h; sourceTree = "<group>"; };
+		079CE27B188B293D00D476F8 /* GyroscopeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GyroscopeViewController.m; sourceTree = "<group>"; };
+		079CE27F188B2F5F00D476F8 /* GyroscopeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GyroscopeViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		079CE22D188AF45C00D476F8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				079CE277188B182700D476F8 /* CoreMotion.framework in Frameworks */,
+				079CE236188AF45C00D476F8 /* CoreGraphics.framework in Frameworks */,
+				079CE238188AF45C00D476F8 /* UIKit.framework in Frameworks */,
+				079CE234188AF45C00D476F8 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		079CE227188AF45C00D476F8 = {
+			isa = PBXGroup;
+			children = (
+				079CE239188AF45C00D476F8 /* Sensors */,
+				079CE232188AF45C00D476F8 /* Frameworks */,
+				079CE231188AF45C00D476F8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		079CE231188AF45C00D476F8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				079CE230188AF45C00D476F8 /* Sensors.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		079CE232188AF45C00D476F8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				079CE276188B182700D476F8 /* CoreMotion.framework */,
+				079CE233188AF45C00D476F8 /* Foundation.framework */,
+				079CE235188AF45C00D476F8 /* CoreGraphics.framework */,
+				079CE237188AF45C00D476F8 /* UIKit.framework */,
+				079CE24C188AF45C00D476F8 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		079CE239188AF45C00D476F8 /* Sensors */ = {
+			isa = PBXGroup;
+			children = (
+				079CE262188B143200D476F8 /* Classes */,
+				079CE265188B143200D476F8 /* Resources */,
+				079CE23A188AF45C00D476F8 /* Supporting Files */,
+			);
+			path = Sensors;
+			sourceTree = "<group>";
+		};
+		079CE23A188AF45C00D476F8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				079CE23B188AF45C00D476F8 /* Sensors-Info.plist */,
+				079CE23F188AF45C00D476F8 /* main.m */,
+				079CE241188AF45C00D476F8 /* Sensors-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		079CE262188B143200D476F8 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				079CE269188B14B600D476F8 /* controller */,
+				079CE26A188B14B600D476F8 /* model */,
+				079CE26B188B14B600D476F8 /* view */,
+				079CE263188B143200D476F8 /* AppDelegate.h */,
+				079CE264188B143200D476F8 /* AppDelegate.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		079CE265188B143200D476F8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				072D406418987DAA009082A1 /* ProximityViewController.xib */,
+				07848295188C61A800EE2EE1 /* MagnetometerViewController.xib */,
+				079CE27F188B2F5F00D476F8 /* GyroscopeViewController.xib */,
+				079CE274188B16F800D476F8 /* AccelerometerViewController.xib */,
+				079CE266188B143200D476F8 /* Images.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		079CE269188B14B600D476F8 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				079CE26C188B14DF00D476F8 /* MainMenuViewController.h */,
+				079CE26D188B14DF00D476F8 /* MainMenuViewController.m */,
+				079CE26F188B16C600D476F8 /* AccelerometerViewController.h */,
+				079CE270188B16C600D476F8 /* AccelerometerViewController.m */,
+				079CE27A188B293D00D476F8 /* GyroscopeViewController.h */,
+				079CE27B188B293D00D476F8 /* GyroscopeViewController.m */,
+				07848290188C618E00EE2EE1 /* MagnetometerViewController.h */,
+				07848291188C618E00EE2EE1 /* MagnetometerViewController.m */,
+				072D405F18987D86009082A1 /* ProximityViewController.h */,
+				072D406018987D86009082A1 /* ProximityViewController.m */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		079CE26A188B14B600D476F8 /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		079CE26B188B14B600D476F8 /* view */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		079CE22F188AF45C00D476F8 /* Sensors */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 079CE25C188AF45C00D476F8 /* Build configuration list for PBXNativeTarget "Sensors" */;
+			buildPhases = (
+				079CE22C188AF45C00D476F8 /* Sources */,
+				079CE22D188AF45C00D476F8 /* Frameworks */,
+				079CE22E188AF45C00D476F8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Sensors;
+			productName = Sensors;
+			productReference = 079CE230188AF45C00D476F8 /* Sensors.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		079CE228188AF45C00D476F8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = UPSA;
+			};
+			buildConfigurationList = 079CE22B188AF45C00D476F8 /* Build configuration list for PBXProject "Sensors" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 079CE227188AF45C00D476F8;
+			productRefGroup = 079CE231188AF45C00D476F8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				079CE22F188AF45C00D476F8 /* Sensors */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		079CE22E188AF45C00D476F8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				072D406518987DAA009082A1 /* ProximityViewController.xib in Resources */,
+				079CE275188B16F800D476F8 /* AccelerometerViewController.xib in Resources */,
+				079CE268188B143200D476F8 /* Images.xcassets in Resources */,
+				07848296188C61A800EE2EE1 /* MagnetometerViewController.xib in Resources */,
+				079CE280188B2F5F00D476F8 /* GyroscopeViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		079CE22C188AF45C00D476F8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				072D406218987D86009082A1 /* ProximityViewController.m in Sources */,
+				079CE267188B143200D476F8 /* AppDelegate.m in Sources */,
+				079CE26E188B14DF00D476F8 /* MainMenuViewController.m in Sources */,
+				07848293188C618E00EE2EE1 /* MagnetometerViewController.m in Sources */,
+				079CE27D188B293D00D476F8 /* GyroscopeViewController.m in Sources */,
+				079CE272188B16C600D476F8 /* AccelerometerViewController.m in Sources */,
+				079CE240188AF45C00D476F8 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		079CE25A188AF45C00D476F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		079CE25B188AF45C00D476F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		079CE25D188AF45C00D476F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Sensors/Sensors-Prefix.pch";
+				INFOPLIST_FILE = "Sensors/Sensors-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		079CE25E188AF45C00D476F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Sensors/Sensors-Prefix.pch";
+				INFOPLIST_FILE = "Sensors/Sensors-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		079CE22B188AF45C00D476F8 /* Build configuration list for PBXProject "Sensors" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				079CE25A188AF45C00D476F8 /* Debug */,
+				079CE25B188AF45C00D476F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		079CE25C188AF45C00D476F8 /* Build configuration list for PBXNativeTarget "Sensors" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				079CE25D188AF45C00D476F8 /* Debug */,
+				079CE25E188AF45C00D476F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 079CE228188AF45C00D476F8 /* Project object */;
+}

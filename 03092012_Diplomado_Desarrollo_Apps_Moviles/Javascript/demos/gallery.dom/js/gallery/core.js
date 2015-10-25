@@ -1,0 +1,4 @@
+/**
+ * Namespace
+ */
+var GALLERY = GALLERY || {};

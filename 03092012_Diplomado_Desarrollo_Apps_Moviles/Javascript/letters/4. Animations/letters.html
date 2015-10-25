@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Images Gallery</title>
+    <link href="css/styles.css" rel="stylesheet" type="text/css" />
+    
+    <script src="js/utils/drag.js"></script>
+    <script src="js/utils/slide.js"></script>
+    <script src="js/letters/core.js"></script>
+    <script src="js/letters/board.js"></script>
+    <script src="js/letters/letter.js"></script>
+    
+    <script>
+        var game;
+        function loadGame() {
+            game = new LETTERS.Board("game_board");
+            game.loadLetters(['images/A.jpg', 'images/E.jpg', 'images/I.jpg', 'images/O.jpg', 'images/U.jpg']);
+        }
+    </script>
+</head>
+
+<body onload='loadGame()'>
+
+    <div id="game_board">
+
+    </div>
+
+</body>
+</html>

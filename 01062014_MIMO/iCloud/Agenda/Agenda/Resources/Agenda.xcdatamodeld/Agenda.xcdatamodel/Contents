@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13B42" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Contact" representedClassName="Contact" syncable="YES">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dni" attributeType="String" minValueString="1" indexed="YES" syncable="YES"/>
+        <attribute name="name" attributeType="String" minValueString="1" syncable="YES"/>
+        <attribute name="surname" attributeType="String" minValueString="1" syncable="YES"/>
+        <relationship name="infoEntries" toMany="YES" deletionRule="Cascade" destinationEntity="ContactInfo" inverseName="contact" inverseEntity="ContactInfo" syncable="YES"/>
+    </entity>
+    <entity name="ContactInfo" representedClassName="ContactInfo" syncable="YES">
+        <attribute name="info" attributeType="String" syncable="YES"/>
+        <relationship name="contact" maxCount="1" deletionRule="Deny" destinationEntity="Contact" inverseName="infoEntries" inverseEntity="Contact" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Contact" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="ContactInfo" positionX="0" positionY="0" width="0" height="0"/>
+    </elements>
+</model>
