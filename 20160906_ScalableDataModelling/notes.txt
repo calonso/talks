@@ -1,0 +1,2 @@
+Add explanations from: http://www.datastax.com/dev/blog/a-deep-look-to-the-cql-where-clause
+Add some graphs and ideas from: http://www.planetcassandra.org/blog/the-most-important-thing-to-know-in-cassandra-data-modeling-the-primary-key/
