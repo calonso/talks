@@ -1,0 +1,45 @@
+---
+- hosts: tag_Name_kafka
+  remote_user: ubuntu
+  become: yes
+
+  tasks:
+    - name: Install Java JRE
+      apt: name=default-jre state=present update_cache=yes
+
+    - name: Install Scala
+      apt: deb=http://downloads.lightbend.com/scala/2.11.8/scala-2.11.8.deb
+
+    - name: Install Zookeeper
+      apt: name=zookeeperd state=present
+
+    - name: Ensure Kafka group exists
+      group: name=kafka system=yes state=present
+
+    - name: Ensure Kafka user exists
+      user: >
+        name=kafka
+        comment="Kafka"
+        system=yes
+        group=kafka
+        shell=/bin/false
+        createhome=no
+        state=present
+
+    - name: Create kafka logs directory
+      file: path=/var/log/kafka state=directory owner=kafka group=kafka
+
+    - name: Download and unpack Kafka binaries
+      unarchive: >
+        dest=/opt group=kafka owner=kafka copy=no
+        src=http://apache.trisect.eu/kafka/0.10.0.1/kafka_2.11-0.10.0.1.tgz
+
+    - name: Set kafka permissions
+      file: path=/opt/kafka_2.11-0.10.0.1 state=directory owner=kafka group=kafka recurse=yes
+
+    - name: Link kafka install
+      file: src=/opt/kafka_2.11-0.10.0.1 dest=/opt/kafka state=link owner=kafka group=kafka
+
+    - name: Start Kafka daemon
+      shell: nohup /opt/kafka/bin/kafka-server-start.sh /opt/kafka/config/server.properties > /var/log/kafka/kafka.log 2>&1 &
+      become_user: kafka
