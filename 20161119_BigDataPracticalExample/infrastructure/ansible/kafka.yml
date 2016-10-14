@@ -1,14 +1,17 @@
 ---
 - hosts: tag_Name_kafka
   remote_user: ubuntu
-  become: yes
+  become: true
 
   tasks:
+    - name: Install GB language pack
+      apt: name=language-pack-en state=present update_cache=yes
+
     - name: Install Java JRE
-      apt: name=default-jre state=present update_cache=yes
+      apt: name=default-jre state=present
 
     - name: Install Scala
-      apt: deb=http://downloads.lightbend.com/scala/2.11.8/scala-2.11.8.deb
+      apt: deb=http://downloads.lightbend.com/scala/2.11.8/scala-2.11.8.deb state=present
 
     - name: Install Zookeeper
       apt: name=zookeeperd state=present
@@ -23,7 +26,7 @@
         system=yes
         group=kafka
         shell=/bin/false
-        createhome=no
+        createhome=yes
         state=present
 
     - name: Create kafka logs directory
@@ -31,7 +34,7 @@
 
     - name: Download and unpack Kafka binaries
       unarchive: >
-        dest=/opt group=kafka owner=kafka copy=no
+        dest=/opt group=kafka owner=kafka copy=no creates=/opt/kafka/LICENSE
         src=http://apache.trisect.eu/kafka/0.10.0.1/kafka_2.11-0.10.0.1.tgz
 
     - name: Set kafka permissions
@@ -40,6 +43,40 @@
     - name: Link kafka install
       file: src=/opt/kafka_2.11-0.10.0.1 dest=/opt/kafka state=link owner=kafka group=kafka
 
+    - name: Check if Kafka daemon is already running
+      command: bash -c "ps aux | grep kafka"
+      register: kafka_daemon
+      changed_when: false
+
     - name: Start Kafka daemon
-      shell: nohup /opt/kafka/bin/kafka-server-start.sh /opt/kafka/config/server.properties > /var/log/kafka/kafka.log 2>&1 &
+      command: bash -c "nohup /opt/kafka/bin/kafka-server-start.sh /opt/kafka/config/server.properties > /var/log/kafka/kafka.log 2>&1 &"
+      become: true
+      become_user: kafka
+      when: "{{kafka_daemon.stdout_lines|length}} == 2"
+
+    - name: Check if Codemotion2016 topic is already created
+      command: bash -c "/opt/kafka/bin/kafka-topics.sh --list --zookeeper localhost:2181 | grep codemotion2016"
+      become: true
+      become_user: kafka
+      register: codemotion_2016_topic
+      changed_when: false
+      ignore_errors: true
+
+    - name: Create Codemotion 2016 Kafka topic
+      command: "/opt/kafka/bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic codemotion2016"
+      become: true
+      become_user: kafka
+      when: "{{codemotion_2016_topic.stdout_lines|length}} == 0"
+
+    - name: Upload the compiled kafka-connect-twitter jar
+      copy: dest=/home/kafka/ src=../../kafka-connect-twitter/target/kafka-connect-twitter-0.1-jar-with-dependencies.jar group=kafka owner=kafka
+
+    - name: Upload the Twitter Source connector config file
+      copy: dest=/opt/kafka/config/ src=../../twitter-source.properties group=kafka owner=kafka
+
+    - name: Connect the Twitter Source connector
+      command: bash -c "nohup /opt/kafka/bin/connect-standalone.sh /opt/kafka/config/connect-standalone.properties /opt/kafka/config/twitter-source.properties > /var/log/kafka/twitter-connect.log 2>&1 &"
+      environment:
+        CLASSPATH: /home/kafka/kafka-connect-twitter-0.1-jar-with-dependencies.jar
+      become: true
       become_user: kafka
