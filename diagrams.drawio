@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-10-23T11:31:50.566Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36" etag="5C8zq5KgtLRRNbqpr6gq" version="21.8.0" type="github">
+<mxfile host="app.diagrams.net" modified="2023-10-23T11:32:43.033Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36" etag="R2d4RDavhVDPxJ3f1041" version="21.8.0" type="github">
   <diagram name="Page-1" id="sTb5aIzIU9DBBp99tq6U">
     <mxGraphModel dx="1808" dy="1121" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -14,9 +14,9 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="6ws37fdnxySYZuFqzhG_-6" value="1. Write a = 1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="6ws37fdnxySYZuFqzhG_-5">
+        <mxCell id="6ws37fdnxySYZuFqzhG_-6" value="1. COMMIT a = 1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="6ws37fdnxySYZuFqzhG_-5">
           <mxGeometry x="0.1143" y="2" relative="1" as="geometry">
-            <mxPoint as="offset" />
+            <mxPoint x="-2" y="12" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="6ws37fdnxySYZuFqzhG_-1" value="User" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
